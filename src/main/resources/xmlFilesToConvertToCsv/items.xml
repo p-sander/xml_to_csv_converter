@@ -1,0 +1,12 @@
+<root>
+    <items name="name">
+        <item id="1">ABC</item>
+        <item id="2">DEF</item>
+        <item id="3">XYZ</item>
+    </items>
+    <items name="amount">
+        <item id="1">12</item>
+        <item id="2">34</item>
+        <item id="3">56</item>
+    </items>
+</root>
