@@ -4,9 +4,7 @@ import lombok.NoArgsConstructor;
 import org.pati.pati_xml_csv.model.ElementInfo;
 
 import javax.xml.stream.XMLStreamReader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 @NoArgsConstructor
 public class XmlElementHelper {
@@ -38,6 +36,29 @@ public class XmlElementHelper {
         }
 
         return currentColumnKey;
+    }
+
+    public void handleCharacters(XMLStreamReader reader,
+                                 Stack<ElementInfo> stack,
+                                 String currentColumnKey,
+                                 Map<String, Map<String, String>> recordsById,
+                                 Set<String> headers) {
+
+        String text = reader.getText().trim();
+        if (text.isEmpty() || stack.isEmpty()) return;
+
+        String recordId = findRecordId(stack);
+        if (recordId == null) {
+            recordId = "record_" + (recordsById.size() + 1);
+        }
+
+        String header = constructHeader(stack, currentColumnKey);
+        headers.add(header);
+        headers.add("id");
+
+        Map<String, String> currentRecord = recordsById.computeIfAbsent(recordId, k -> new LinkedHashMap<>());
+        currentRecord.putIfAbsent("id", recordId);
+        currentRecord.put(header, text);
     }
 
     // use stack for storing all elements
