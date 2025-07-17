@@ -33,6 +33,7 @@ public class CsvFileWriter {
     }
 
     private List<String> prioritizeIdHeader(Set<String> headers) {
+        validateIdExistenceInSet(headers);
 
         List<String> sortedHeaders = new LinkedList<>();
         if (headers.contains("id")) {
@@ -46,5 +47,10 @@ public class CsvFileWriter {
         return sortedHeaders;
     }
 
+    private void validateIdExistenceInSet(Set<String> headers) {
+        if (!headers.contains("id")) {
+            throw new IllegalStateException("Missing 'id' header in XML data.");
+        }
+    }
 
 }
