@@ -26,4 +26,11 @@ public class XmlElementHelper {
         }
         return null;
     }
+
+    private String constructHeader(Stack<ElementInfo> stack, String columnKey) {
+        if (columnKey != null) {
+            return columnKey;
+        }
+        return stack.peek().getName();
+    }
 }
