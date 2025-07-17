@@ -1,16 +1,13 @@
 package org.pati.pati_xml_csv.service.helper;
 
-
-import org.pati.pati_xml_csv.exceptions.WriteToCsvException;
-
 import lombok.extern.slf4j.Slf4j;
+import org.pati.pati_xml_csv.exceptions.WriteToCsvException;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
-
 
 @Slf4j
 @Component
@@ -32,7 +29,7 @@ public class CsvFileWriter {
                 writer.write(String.join(",", rowValues));
                 writer.newLine();
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             log.error("WriteToCsvException occurred " + csvFilePath);
             throw new WriteToCsvException("An error occurred during writing data to csv file " + csvFilePath, e);
         }
@@ -40,7 +37,7 @@ public class CsvFileWriter {
 
     private List<String> prioritizeIdHeader(Set<String> headers) {
 
-      validateIdExistenceInSet(headers);
+        validateIdExistenceInSet(headers);
 
         List<String> sortedHeaders = new LinkedList<>();
 
@@ -53,7 +50,8 @@ public class CsvFileWriter {
         return sortedHeaders;
     }
 
-    private void validateIdExistenceInSet(Set<String> headers){
+    private void validateIdExistenceInSet(Set<String> headers) {
+
         if (!headers.contains("id")) {
             throw new IllegalStateException("Missing 'id' header in XML data.");
         }

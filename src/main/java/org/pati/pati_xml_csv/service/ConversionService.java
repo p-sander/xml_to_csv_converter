@@ -1,6 +1,4 @@
 package org.pati.pati_xml_csv.service;
-// src/main/java/org/pati/pati_xml_csv/service/ConversionService.java
-// src/main/java/org/pati/pati_xml_csv/service/ConversionService.java
 
 import lombok.extern.slf4j.Slf4j;
 import org.pati.pati_xml_csv.service.helper.CsvFileWriter;
@@ -12,7 +10,6 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-
 @Service
 @Slf4j
 public class ConversionService {
@@ -23,7 +20,6 @@ public class ConversionService {
         this.csvFileWriter = csvFileWriter;
         this.xmlParser = xmlParser;
     }
-
 
     public void convertXmlToCsv(String xmlFilePath, String csvFilePath) {
         Set<String> headers = new LinkedHashSet<>();
@@ -37,5 +33,4 @@ public class ConversionService {
             throw new RuntimeException("Conversion failed", e);
         }
     }
-
 }

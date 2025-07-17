@@ -20,15 +20,13 @@ import java.util.Stack;
 @AllArgsConstructor
 @Component
 public class XmlFileParser {
+
     private final XmlElementHelper elementHelper;
+
     private final XmlParserHelper xmlParserHelper;
 
-//    public XmlFileParser(XmlElementHelper elementHelper, XmlParserHelper xmlParserHelper) {
-//        this.elementHelper = elementHelper;
-//        this.xmlParserHelper = xmlParserHelper;
-//    }
-
     public Map<String, Map<String, String>> parseXmlFile(String xmlFilePath, Set<String> headers) throws ParseXmlException {
+
         Map<String, Map<String, String>> recordsById = new LinkedHashMap<>();
         Stack<ElementInfo> elementStack = new Stack<>();
 
