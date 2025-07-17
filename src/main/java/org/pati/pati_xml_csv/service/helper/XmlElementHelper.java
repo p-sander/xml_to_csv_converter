@@ -9,7 +9,7 @@ import java.util.*;
 @NoArgsConstructor
 public class XmlElementHelper {
 
-    private String handleStartElement(XMLStreamReader reader, Stack<ElementInfo> stack, String currentColumnKey) {
+    public String handleStartElement(XMLStreamReader reader, Stack<ElementInfo> stack, String currentColumnKey) {
         Map<String, String> attributes = new HashMap<>();
 
         for (int i = 0; i < reader.getAttributeCount(); i++) {
