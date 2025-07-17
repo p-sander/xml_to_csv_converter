@@ -7,4 +7,23 @@ import java.util.Stack;
 
 @NoArgsConstructor
 public class XmlElementHelper {
+
+    // use stack for storing all elements
+    private String findRecordId(Stack<ElementInfo> stack) {
+        if (stack.size() > 1) {
+            for (int i = stack.size() - 2; i >= 0; i--) {
+                String id = stack.get(i).getOneAttribute("id");
+                if (id != null) {
+                    return id;
+                }
+            }
+        }
+        if (!stack.isEmpty()) {
+            String id = stack.peek().getOneAttribute("id");
+            if (id != null) {
+                return id;
+            }
+        }
+        return null;
+    }
 }
