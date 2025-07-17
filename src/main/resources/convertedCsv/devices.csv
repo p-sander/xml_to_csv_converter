@@ -1,0 +1,4 @@
+id,name,category,brand,price,discount_price,supplier
+"prod-101","Laptop Pro 15","Electronics","TechCorp","4500.00","4199.99","Global-Imports"
+"prod-205","Wireless Mouse","Accessories","ClickFast","89.90","","Euro-Gadgets"
+"prod-310","Headphones","Gaming","GamerGear","350.00","","Global-Imports"

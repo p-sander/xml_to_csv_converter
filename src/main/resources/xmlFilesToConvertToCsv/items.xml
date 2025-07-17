@@ -1,6 +1,6 @@
 <root>
     <items name="name">
-        <item id="1">ABC</item>
+         <item id="1">ABC</item>
         <item id="2">DEF</item>
         <item id="3">XYZ</item>
     </items>

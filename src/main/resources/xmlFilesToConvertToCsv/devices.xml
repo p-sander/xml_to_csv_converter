@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inventory stock_date="2023-10-27">
+    <product id="prod-101">
+        <name>Laptop Pro 15</name>
+        <details>
+            <category>Electronics</category>
+            <brand>TechCorp</brand>
+        </details>
+        <pricing>
+            <price currency="PLN">4500.00</price>
+            <discount_price currency="PLN">4199.99</discount_price>
+        </pricing>
+        <supplier>Global-Imports</supplier>
+    </product>
+    <product id="prod-205">
+        <name>Wireless Mouse</name>
+        <details>
+            <category>Accessories</category>
+            <brand>ClickFast</brand>
+        </details>
+        <pricing>
+            <price currency="PLN">89.90</price>
+        </pricing>
+        <supplier>Euro-Gadgets</supplier>
+    </product>
+    <product id="prod-310">
+        <name>Headphones</name>
+        <details>
+            <category>Gaming</category>
+            <brand>GamerGear</brand>
+        </details>
+        <pricing>
+            <price currency="PLN">350.00</price>
+        </pricing>
+        <supplier>Global-Imports</supplier>
+    </product>
+</inventory>
