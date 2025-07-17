@@ -28,6 +28,18 @@ public class XmlElementHelper {
         return currentColumnKey;
     }
 
+    public String handleEndElement(Stack<ElementInfo> stack, String currentColumnKey) {
+        if (stack.isEmpty()) return currentColumnKey;
+
+        ElementInfo endedElement = stack.pop();
+        if (endedElement.getAttributes().containsKey("name")
+                && endedElement.getOneAttribute("name").equals(currentColumnKey)) {
+            return null;
+        }
+
+        return currentColumnKey;
+    }
+
     // use stack for storing all elements
     private String findRecordId(Stack<ElementInfo> stack) {
         if (stack.size() > 1) {
