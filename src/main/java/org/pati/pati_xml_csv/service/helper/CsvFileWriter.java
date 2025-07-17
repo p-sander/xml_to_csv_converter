@@ -4,6 +4,8 @@ package org.pati.pati_xml_csv.service.helper;
 import org.pati.pati_xml_csv.exceptions.WriteToCsvException;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,6 +13,7 @@ import java.util.*;
 
 
 @Slf4j
+@Component
 public class CsvFileWriter {
     public void writeDataToCsv(String csvFilePath, Set<String> headers, Map<String, Map<String, String>> records) throws WriteToCsvException {
 

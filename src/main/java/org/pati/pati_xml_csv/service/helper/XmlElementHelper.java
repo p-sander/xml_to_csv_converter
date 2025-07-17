@@ -2,11 +2,13 @@ package org.pati.pati_xml_csv.service.helper;
 
 import lombok.NoArgsConstructor;
 import org.pati.pati_xml_csv.model.ElementInfo;
+import org.springframework.stereotype.Component;
 
 import javax.xml.stream.XMLStreamReader;
 import java.util.*;
 
 @NoArgsConstructor
+@Component
 public class XmlElementHelper {
 
     public String handleStartElement(XMLStreamReader reader, Stack<ElementInfo> stack, String currentColumnKey) {

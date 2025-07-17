@@ -19,10 +19,11 @@ public class ConversionService {
     private final CsvFileWriter csvFileWriter;
     private final XmlFileParser xmlParser;
 
-    public ConversionService() {
-        this.csvFileWriter = new CsvFileWriter();
-        this.xmlParser = new XmlFileParser();
+    public ConversionService(CsvFileWriter csvFileWriter, XmlFileParser xmlParser) {
+        this.csvFileWriter = csvFileWriter;
+        this.xmlParser = xmlParser;
     }
+
 
     public void convertXmlToCsv(String xmlFilePath, String csvFilePath) {
         Set<String> headers = new LinkedHashSet<>();
