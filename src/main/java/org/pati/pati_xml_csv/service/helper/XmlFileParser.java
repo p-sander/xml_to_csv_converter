@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.pati.pati_xml_csv.exceptions.ParseXmlException;
 import org.pati.pati_xml_csv.model.ElementInfo;
 
+import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.FileInputStream;
@@ -29,6 +30,26 @@ public class XmlFileParser {
 
         try (FileInputStream in = new FileInputStream(xmlFilePath)) {
             XMLStreamReader reader = xmlParserHelper.initXmlReader(in);
+            String currentColumnKey = null;
+
+            while (reader.hasNext()) {
+                int eventType = reader.next();
+
+                switch (eventType) {
+                    case XMLStreamConstants.START_ELEMENT:
+                        currentColumnKey = elementHelper.handleStartElement(reader, elementStack, currentColumnKey);
+                        break;
+
+                    case XMLStreamConstants.CHARACTERS:
+                        elementHelper.handleCharacters(reader, elementStack, currentColumnKey, recordsById, headers);
+                        break;
+
+                    case XMLStreamConstants.END_ELEMENT:
+                        currentColumnKey = elementHelper.handleEndElement(elementStack, currentColumnKey);
+                        break;
+                }
+            }
+
         } catch (IOException | XMLStreamException e) {
             log.error("ParseXmlException occurred for file: {}", xmlFilePath, e);
             throw new ParseXmlException("XML parsing error in " + xmlFilePath, e);
@@ -36,5 +57,4 @@ public class XmlFileParser {
 
         return recordsById;
     }
-
 }
